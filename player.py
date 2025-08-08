@@ -6,6 +6,8 @@ from constants import (
     PLAYER_SHOOT_SPEED,
     PLAYER_SPEED,
     PLAYER_TURN_SPEED,
+    SCREEN_HEIGHT,
+    SCREEN_WIDTH,
 )
 from shot import Shot
 
@@ -39,6 +41,7 @@ class Player(CircleShape):
     def move(self, dt):
         distance = pygame.Vector2(0, 1).rotate(self.rotation) * dt * PLAYER_SPEED
         self.position += distance
+        self.screen_wrap()
 
     def rotate(self, dt):
         self.rotation += PLAYER_TURN_SPEED * dt
